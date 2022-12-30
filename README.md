@@ -204,10 +204,35 @@ https://rubygems.org/gems/devise
 - Customize devise views
   - Set `config.scoped_views = true` inside the config/initializers/devise.rb file
 
-- Use bootstrap
+- Use bootstrap to style log in and sign up forms
+  - Log in: app/views/devise/sessions/new.html.erb
+  - Sign up: app/views/devise/registrations/new.html.erb
+
 https://getbootstrap.com/
-  - center
+  - using css, center form elements on app/views/layouts/application.html.erb
+```css
+  /* css */
+  .center {
+    text-align: center;
+    margin: 0 auto;
+  }
+```
+```html
+  <!-- application.html.erb -->
+  <div class="center">
+    ...
+  </div>
+```
+  - using bootstrap
+  https://getbootstrap.com/docs/5.3/utilities/position/#center-elements
+```html
+  <!-- application.html.erb -->
+  <div class="position-absolute top-50 start-50 translate-middle">
+    ...
+  </div>
+```
   - change background
+  
   - card
 
 ## Flash messages in app/views/layouts/application.html.erb.
