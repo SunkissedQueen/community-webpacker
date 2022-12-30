@@ -127,6 +127,62 @@
   config.sign_out_via = :get
 ```
 
+### React Components
+- Create three directories in your React application `app/javascript/components`: assets(image files), components(helper components), and pages(control the views sent to UI)
+
+- App.js handles "big picture" logic. Basic navigation will be placed in a Header component. The navigation can include internal links to other React components as well as the routes to the Devise forms. 
+```javascript
+  // Use the spread operator to pass all the Devise data coming into App.js on to Header component call.
+  import Header from "./components/Header"
+
+  const App = (props) {
+    return (
+      <>
+        <h1>Devise a Different View Point</h1>
+        <Header {...props} />
+```
+- Reference the routes by destructing them out of props.
+```javascript 
+  // app/javascript/components/components/Header.js
+  import React from "react"
+  // use reactstrap for styling
+  import { Nav, NavItem } from "reactstrap"
+
+  const Header = ({
+    logged_in,
+    current_user,
+    new_user_route,
+    sign_in_route,
+    sign_out_route
+  }) => {
+    console.log("logged_in:", logged_in)
+    console.log("current_user:", current_user)
+    console.log("new_user_route:", new_user_route)
+    console.log("sign_in_route:", sign_in_route)
+    console.log("sign_out_route:", sign_out_route)
+    // create conditional rendering to show the appropriate navigation links to Devise depending on whether the user is logged in or not
+    return (
+      <Nav>
+        {
+          !logged_in ? 
+            <NavItem>
+              <a href={sign_in_route}>
+                Sign In
+              </a>
+            </NavItem> :
+            <NavItem>
+              <a href={sign_out_route}>
+                Sign Out
+              </a>
+            </NavItem>
+        }
+      </Nav>
+    )
+  }
+
+  export default Header
+```
+
 ## Flash messages in app/views/layouts/application.html.erb.
 ```ruby
   <p class="notice"><%= notice %></p>
