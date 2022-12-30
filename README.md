@@ -68,3 +68,24 @@
     root 'home#index'
   end
 ```
+
+## Add Reactstrap to the application
+
+- $ bundle add bootstrap
+- $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
+- $ yarn add reactstrap
+- Add the following code to app/assets/stylesheets/application.scss
+  - @import "bootstrap";
+
+## Add Devise to the application
+
+- $ bundle add devise
+- $ rails generate devise:install
+- $ rails generate devise User
+- $ rails db:migrate
+
+Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
