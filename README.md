@@ -183,6 +183,33 @@
   export default Header
 ```
 
+## Devise Styling
+
+- The Devise gem comes with modules that have preset styling and formatting: 
+https://rubygems.org/gems/devise
+  * Database Authenticatable - validate that the user is real
+  * Omniauthable - prompts a user to provide authentication information from various platforms
+  * Confirmable - sends emails with confirmation instructions
+  * Recoverable - resets the password
+  * Registerable - provides a registration process to sign up new users
+  * Rememberable: manages token for remembering the user
+  * Trackable: tracks sign in data
+  * Timeoutable: closes sessions that have not been active in a specified period of time
+  * Validatable: provides validations of email and password
+  * Lockable: locks an account after a specified number of failed sign-in attempts
+
+- Invoke the following generator to copy all views to your application:
+  - $ rails generate devise:views
+
+- Customize devise views
+  - Set `config.scoped_views = true` inside the config/initializers/devise.rb file
+
+- Use bootstrap
+https://getbootstrap.com/
+  - center
+  - change background
+  - card
+
 ## Flash messages in app/views/layouts/application.html.erb.
 ```ruby
   <p class="notice"><%= notice %></p>
