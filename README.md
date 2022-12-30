@@ -84,8 +84,52 @@
 - $ rails generate devise User
 - $ rails db:migrate
 
-Ensure you have flash messages in app/views/layouts/application.html.erb.
-     For example:
+- Devise will handle the forms for the user sign up and sign in, the rest of the views will come from React. Pass information from Rails and Devise into the React App.js component
+```ruby
+  # app/views/home/index.html.erb
+  <%= react_component 'App', {
+    logged_in: user_signed_in?,
+    current_user: current_user,
+    new_user_route: new_user_registration_path,
+    sign_in_route: new_user_session_path,
+    sign_out_route: destroy_user_session_path
+  } %>
+```
+```javascript
+  // app/javascript/components/App.js
+  // Access the object through props
+  const App = ({
+    logged_in,
+    current_user,
+    new_user_route,
+    sign_in_route,
+    sign_out_route
+  }) => {
+    // Use logs to see the data
+    console.log("logged_in:", logged_in)
+    console.log("current_user:", current_user)
+    console.log("new_user_route:", new_user_route)
+    console.log("sign_in_route:", sign_in_route)
+    console.log("sign_out_route:", sign_out_route)
+    return (
+```
+- Set up the default url options for the Devise mailer in our development environment 
+```ruby
+  # config/environments/development.rb
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+```
+- Instruct Devise to listen for logout requests via a get request instead of the default delete
+```ruby
+  # config/initializers/devise.rb
+  # Find this line:
+  config.sign_out_via = :delete
+  # And replace it with this:
+  config.sign_out_via = :get
+```
 
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+## Flash messages in app/views/layouts/application.html.erb.
+```ruby
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+```
+
