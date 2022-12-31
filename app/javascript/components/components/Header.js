@@ -14,21 +14,16 @@ const Header = ({
   console.log("sign_in_route:", sign_in_route)
   console.log("sign_out_route:", sign_out_route)
   return (
-    <Nav>
-      {
-        !logged_in ? 
-          <NavItem>
-            <a href={sign_in_route}>
-              Sign In
-            </a>
-          </NavItem> :
-          <NavItem>
-            <a href={sign_out_route}>
-              Sign Out
-            </a>
-          </NavItem>
-      }
-    </Nav>
+    <div className="header">
+      <nav class="nav">
+        <h2>Devise a Different Point of View</h2>
+        {
+          !logged_in ? 
+          <a class="nav-link" href={sign_in_route}>Sign In</a> :
+          <a class="nav-link" href={sign_out_route}>Sign Out</a>
+        }
+      </nav>
+    </div>
   )
 }
 

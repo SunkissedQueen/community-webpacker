@@ -183,6 +183,79 @@
   export default Header
 ```
 
+## Devise Styling
+
+- The Devise gem comes with modules that have preset styling and formatting: 
+https://rubygems.org/gems/devise
+  * Database Authenticatable - validate that the user is real
+  * Omniauthable - prompts a user to provide authentication information from various platforms
+  * Confirmable - sends emails with confirmation instructions
+  * Recoverable - resets the password
+  * Registerable - provides a registration process to sign up new users
+  * Rememberable: manages token for remembering the user
+  * Trackable: tracks sign in data
+  * Timeoutable: closes sessions that have not been active in a specified period of time
+  * Validatable: provides validations of email and password
+  * Lockable: locks an account after a specified number of failed sign-in attempts
+
+- Invoke the following generator to copy all views to your application:
+  - $ rails generate devise:views
+
+- Customize devise views
+  - Set `config.scoped_views = true` inside the config/initializers/devise.rb file
+
+- Use bootstrap to style log in and sign up forms
+  - Log in: app/views/devise/sessions/new.html.erb
+  - Sign up: app/views/devise/registrations/new.html.erb
+
+https://getbootstrap.com/
+  - using css, center form elements on app/views/layouts/application.html.erb
+```css
+  /* css */
+  .center {
+    text-align: center;
+    margin: 0 auto;
+  }
+```
+```html
+  <!-- application.html.erb -->
+  <div class="center">
+    ...
+  </div>
+```
+  - using bootstrap
+  https://getbootstrap.com/docs/5.3/utilities/position/#center-elements
+```html
+  <!-- application.html.erb -->
+  <div class="position-absolute top-50 start-50 translate-middle">
+    ...
+  </div>
+```
+
+  - add image
+    - Download the image file into app/assets/images folder. All files in the assets directory get compiled by the server. Options to add image.
+      - Add the image using the image_tag helper method to reference the correct file:
+      `<%= image_tag "imageFile", height: 300 %>`
+      - If background, go to application.scss
+```css
+      body {
+        background-image: url("imageFile");
+      }
+```
+
+  - use bootstrap card to allow forms to be more visible
+  https://getbootstrap.com/docs/5.3/components/card/#background-and-color
+  ```html
+    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  ```
+
+
 ## Flash messages in app/views/layouts/application.html.erb.
 ```ruby
   <p class="notice"><%= notice %></p>

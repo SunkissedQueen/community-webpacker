@@ -14,3 +14,21 @@
  *= require_self
  */
  @import "bootstrap";
+
+ body {
+  background-image: url("craiyonSyntacticalAstronaut.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: auto;
+ }
+
+ .page, .header {
+  width: 95vw; 
+  background-color: rgba(222, 215, 195, 0.7)
+ }
+
+ .header {
+  display: flex;
+  align-items: center;
+ }

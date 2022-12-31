@@ -2,7 +2,7 @@ import React from "react"
 
 const TalkIndex = () => {
   return (
-    <>
+    <div className="page">
       <h3>Let's Explore the Power of Syntax</h3>
       <ul>
         <li>P5.js</li>
@@ -13,8 +13,7 @@ const TalkIndex = () => {
         <li>PgAdmin</li>
         <li>Postman</li>
       </ul>
-
-    </>
+    </div>
   )
 }
 
