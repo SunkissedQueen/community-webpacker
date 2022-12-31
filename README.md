@@ -231,9 +231,30 @@ https://getbootstrap.com/
     ...
   </div>
 ```
-  - change background
-  
-  - card
+
+  - add image
+    - Download the image file into app/assets/images folder. All files in the assets directory get compiled by the server. Options to add image.
+      - Add the image using the image_tag helper method to reference the correct file:
+      `<%= image_tag "imageFile", height: 300 %>`
+      - If background, go to application.scss
+```css
+      body {
+        background-image: url("imageFile");
+      }
+```
+
+  - use bootstrap card to allow forms to be more visible
+  https://getbootstrap.com/docs/5.3/components/card/#background-and-color
+  ```html
+    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  ```
+
 
 ## Flash messages in app/views/layouts/application.html.erb.
 ```ruby
