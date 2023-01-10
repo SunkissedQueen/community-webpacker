@@ -16,7 +16,7 @@ const Header = ({
   return (
     <div className="header">
       <nav class="nav">
-        <h2>Devise a Different Point of View</h2>
+        <a class="nav-link" href={sign_in_route}>Devise a Different Point of View</a>
         {
           !logged_in ? 
           <a class="nav-link" href={sign_in_route}>Sign In</a> :
